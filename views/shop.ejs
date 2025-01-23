@@ -8,13 +8,13 @@
     </div>
 <% } %>
 
-<nav class="w-full fixed top-0 left-0 px-5 py-3 flex justify-between">
-    <h3 class="text-xl">Scatch</h3>
+<nav class="w-full fixed top-0 left-0 px-5 py-3 flex justify-between bg-[#ffffff] shadow-md">
+    <h3 class="text-xl text-gray-700">Scatch</h3>
 </nav>
 
-<div class="w-full h-screen flex flex-col sm:flex-row sm:items-start px-4 sm:px-20 py-4 sm:py-20">
+<div class="w-full h-screen flex flex-col sm:flex-row sm:items-start px-4 sm:px-20 py-4 sm:py-20 bg-[#f7f7f7]">
     <!-- Sidebar -->
-    <div class="w-[25%] flex h-screen flex-col items-start">
+    <div class="w-[25%] flex h-screen flex-col items-start bg-[#ffffff] shadow-md p-5 rounded-lg">
         <div class="flex items-center gap-2">
             <h3>Sort by</h3>
             <form action="/shop">
@@ -40,21 +40,21 @@
 
     <!-- Main Content -->
     <div class="w-[75%] flex flex-col gap-5 h-screen">
-        <div class="flex items-start gap-5">
+        <div class="flex flex-wrap gap-5">
             <% products.forEach(function(product) { %>
-                <div class="w-60">
+                <div class="w-[calc(25%-1rem)] bg-[#ffffff] shadow-md rounded-lg p-4"> <!-- White background with shadow for each product -->
                     <!-- Product Image -->
-                    <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+                    <div class="w-full h-52 flex items-center justify-center bg-[#f0f0f0]">
                         <img class="h-[12rem] border-red-500" src="data:image/jpeg;base64,<%= product.imageBase64 %>" alt="">
                     </div>
                     
                     <!-- Product Details -->
-                    <div class="flex justify-between bg-[<%= product.panelcolor %>] items-center px-4 py-4 text-[<%= product.textcolor %>]">
+                    <div class="flex justify-between bg-[#ffffff] items-center px-4 py-4 text-gray-800">
                         <div>
                             <h3><%= product.name %></h3>
                             <h4>₹ <%= product.price %></h4>
                         </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="/addCart/<%= product._id %>">
+                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-blue-500 text-white" href="/addCart/<%= product._id %>">
                             <i class="ri-add-line"></i>
                         </a>
                     </div>
