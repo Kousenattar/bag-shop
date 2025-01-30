@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router();
 const productModel = require("../models/product_mdels");
 const userModel = require("../models/user_models");
+const js = require("../public/javascript/j")
 
 const isLogin = require("../mildlewares/isLogIn");
 
@@ -98,6 +99,20 @@ router.get("/delete/:productId", isLogin, async function (req, res) {
 router.get("/buy/:id",async function(req,res){
     res.send("payment");
 })
+
+router.get("/account", isLogin, async function(req, res) {
+    try {
+        let user = await userModel.findOne({ email: req.user.email });
+        if (!user) return res.status(404).send("User not found");
+        console.log(user)
+        
+        res.render("account", { user });
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 
 

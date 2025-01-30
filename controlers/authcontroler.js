@@ -12,6 +12,7 @@ module.exports.registerUser = async function(req,res){
     try {
         let {fullName,email,password} =  req.body;
         const user = await userModel.findOne({  email:email });
+        console.log(req.body)
         if (user) {
             req.flash("error","Account already exists. please login.");
             
@@ -44,10 +45,7 @@ module.exports.loginUser = async function(req,res){
                 res.cookie("token",token);
                 res.redirect("/shop")
             }
-            // else{
-            //     res.send(err.message)
-            // }
-           
+            
             
         })
     }
